@@ -3,312 +3,815 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ZUNVERO — Admin Panel</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css?v=2">
+
+  <style>
+    /* ================================
+       ZUNVERO ADMIN LOGIN
+    ================================= */
+
+    #adminLoginScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #f7f4ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-login-box {
+      width: 100%;
+      max-width: 390px;
+      background: #ffffff;
+      padding: 35px 28px;
+      border: 1px solid #ded9d0;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .admin-login-logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      letter-spacing: 4px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .admin-login-subtitle {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 30px;
+    }
+
+    .admin-login-box label {
+      display: block;
+      text-align: left;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 7px;
+      font-weight: 600;
+    }
+
+    .admin-login-box input {
+      width: 100%;
+      box-sizing: border-box;
+      height: 48px;
+      padding: 0 14px;
+      border: 1px solid #d8d3ca;
+      outline: none;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .admin-login-box input:focus {
+      border-color: #111;
+    }
+
+    .admin-login-btn {
+      width: 100%;
+      height: 48px;
+      border: none;
+      background: #111;
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .admin-login-btn:hover {
+      background: #333;
+    }
+
+    .admin-login-error {
+      min-height: 20px;
+      margin-top: 13px;
+      color: #b00020;
+      font-size: 13px;
+    }
+
+    /* Hide admin content until login */
+    #adminContent {
+      display: none;
+    }
+
+    /* Logout button */
+    .admin-logout-btn {
+      border: 1px solid #222;
+      background: transparent;
+      color: #111;
+      padding: 9px 14px;
+      margin-left: 8px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .admin-logout-btn:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+
+      .admin-header {
+        gap: 12px;
+      }
+
+      .admin-logout-btn {
+        margin-left: 4px;
+        padding: 8px 10px;
+      }
+
+      .admin-login-box {
+        padding: 30px 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="topbar">ZUNVERO ADMIN PANEL</div>
 
-<header class="admin-header">
+<!-- =========================================
+     ADMIN LOGIN SCREEN
+========================================= -->
 
-  <a href="index.html" class="auth-logo">
-    <span>Ƶ</span> ZUNVERO
-  </a>
+<div id="adminLoginScreen">
 
-  <div>
-    <a href="admin-orders.html" class="admin-store-link">
-      ORDERS
-    </a>
+  <div class="admin-login-box">
 
-    <a href="index.html" class="admin-store-link">
-      VIEW STORE →
-    </a>
+    <div class="admin-login-logo">
+      Ƶ ZUNVERO
+    </div>
+
+    <div class="admin-login-subtitle">
+      ADMINISTRATOR ACCESS
+    </div>
+
+    <label for="adminPassword">
+      ADMIN PASSWORD
+    </label>
+
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Enter admin password"
+      autocomplete="off"
+      onkeydown="if(event.key === 'Enter') adminLogin()"
+    >
+
+    <button
+      type="button"
+      class="admin-login-btn"
+      onclick="adminLogin()"
+    >
+      LOGIN TO ADMIN PANEL
+    </button>
+
+    <div
+      id="adminLoginError"
+      class="admin-login-error"
+    ></div>
+
   </div>
 
-</header>
+</div>
 
 
-<main class="admin-page">
+<!-- =========================================
+     ADMIN CONTENT
+========================================= -->
 
-  <div class="admin-title">
-    <p>STORE MANAGEMENT</p>
-    <h1>Products</h1>
+<div id="adminContent">
+
+  <div class="topbar">
+    ZUNVERO ADMIN PANEL
   </div>
 
 
-  <!-- PRODUCT FORM -->
+  <header class="admin-header">
 
-  <section class="admin-form-box">
-
-    <h2 id="adminFormTitle">Add New Product</h2>
-
-    <input type="hidden" id="editProductId">
+    <a href="index.html" class="auth-logo">
+      <span>Ƶ</span> ZUNVERO
+    </a>
 
 
-    <label>Product Name</label>
-    <input
-      type="text"
-      id="adminProductName"
-      placeholder="e.g. Premium Cotton T-Shirt"
-    >
+    <div>
+
+      <a
+        href="admin-orders.html"
+        class="admin-store-link"
+      >
+        ORDERS
+      </a>
+
+      <a
+        href="index.html"
+        class="admin-store-link"
+      >
+        VIEW STORE →
+      </a>
+
+      <button
+        type="button"
+        class="admin-logout-btn"
+        onclick="adminLogout()"
+      >
+        LOGOUT
+      </button>
+
+    </div>
+
+  </header>
 
 
-    <label>Category</label>
-
-    <select id="adminProductCategory">
-
-      <option value="women twopiece">
-        Women • 2-Piece
-      </option>
-
-      <option value="men tshirts">
-        Men • T-Shirt
-      </option>
-
-      <option value="women">
-        Women
-      </option>
-
-      <option value="men">
-        Men
-      </option>
-
-      <option value="tshirts">
-        T-Shirts
-      </option>
-
-      <option value="twopiece">
-        2-Piece
-      </option>
-
-      <option value="accessories">
-        Accessories
-      </option>
-
-      <option value="shoes">
-        Shoes
-      </option>
-
-    </select>
+  <main class="admin-page">
 
 
-    <label>Regular Price</label>
+    <!-- =====================================
+         ADMIN TITLE
+    ====================================== -->
 
-    <input
-      type="number"
-      id="adminProductPrice"
-      placeholder="e.g. 3499"
-    >
+    <div class="admin-title">
 
+      <p>STORE MANAGEMENT</p>
 
-    <label>Sale Price</label>
-
-    <input
-      type="number"
-      id="adminProductSalePrice"
-      placeholder="Optional — e.g. 2999"
-    >
-
-
-    <label>Product Description</label>
-
-    <textarea
-      id="adminProductDescription"
-      rows="5"
-      placeholder="Write complete product description..."
-    ></textarea>
-
-
-    <label>Available Sizes</label>
-
-    <div class="admin-check-grid">
-
-      <label class="admin-check">
-        <input type="checkbox" value="S" class="product-size">
-        <span>S</span>
-      </label>
-
-      <label class="admin-check">
-        <input type="checkbox" value="M" class="product-size">
-        <span>M</span>
-      </label>
-
-      <label class="admin-check">
-        <input type="checkbox" value="L" class="product-size">
-        <span>L</span>
-      </label>
-
-      <label class="admin-check">
-        <input type="checkbox" value="XL" class="product-size">
-        <span>XL</span>
-      </label>
-
-      <label class="admin-check">
-        <input type="checkbox" value="XXL" class="product-size">
-        <span>XXL</span>
-      </label>
+      <h1>Products</h1>
 
     </div>
 
 
-    <label>Colors</label>
+    <!-- =====================================
+         PRODUCT FORM
+    ====================================== -->
 
-    <input
-      type="text"
-      id="adminProductColors"
-      placeholder="e.g. Black, White, Beige"
-    >
+    <section class="admin-form-box">
 
-
-    <label>Stock Quantity</label>
-
-    <input
-      type="number"
-      id="adminProductStock"
-      placeholder="e.g. 25"
-    >
+      <h2 id="adminFormTitle">
+        Add New Product
+      </h2>
 
 
-    <label>Rating</label>
-
-    <select id="adminProductRating">
-
-      <option value="5">★★★★★ — 5.0</option>
-      <option value="4.5">★★★★½ — 4.5</option>
-      <option value="4">★★★★ — 4.0</option>
-      <option value="3.5">★★★½ — 3.5</option>
-      <option value="3">★★★ — 3.0</option>
-
-    </select>
+      <input
+        type="hidden"
+        id="editProductId"
+      >
 
 
-    <label>Badge</label>
+      <label>
+        Product Name
+      </label>
 
-    <select id="adminProductBadge">
-
-      <option value="">No Badge</option>
-      <option value="NEW">NEW</option>
-      <option value="TRENDING">TRENDING</option>
-      <option value="POPULAR">POPULAR</option>
-      <option value="SALE">SALE</option>
-
-    </select>
+      <input
+        type="text"
+        id="adminProductName"
+        placeholder="e.g. Premium Cotton T-Shirt"
+      >
 
 
-    <!-- MAIN IMAGE -->
+      <label>
+        Category
+      </label>
 
-    <label>Main Product Image</label>
+      <select id="adminProductCategory">
 
-    <input
-      type="file"
-      id="adminProductImage"
-      accept="image/*"
-      onchange="previewAdminImage(this, 'adminPreview1')"
-    >
+        <option value="women twopiece">
+          Women • 2-Piece
+        </option>
 
-    <div
-      id="adminPreview1"
-      class="admin-image-preview"
-    ></div>
+        <option value="men tshirts">
+          Men • T-Shirt
+        </option>
 
+        <option value="women">
+          Women
+        </option>
 
-    <!-- IMAGE 2 -->
+        <option value="men">
+          Men
+        </option>
 
-    <label>Additional Image 2</label>
+        <option value="tshirts">
+          T-Shirts
+        </option>
 
-    <input
-      type="file"
-      id="adminProductImage2"
-      accept="image/*"
-      onchange="previewAdminImage(this, 'adminPreview2')"
-    >
+        <option value="twopiece">
+          2-Piece
+        </option>
 
-    <div
-      id="adminPreview2"
-      class="admin-image-preview"
-    ></div>
+        <option value="accessories">
+          Accessories
+        </option>
 
+        <option value="shoes">
+          Shoes
+        </option>
 
-    <!-- IMAGE 3 -->
-
-    <label>Additional Image 3</label>
-
-    <input
-      type="file"
-      id="adminProductImage3"
-      accept="image/*"
-      onchange="previewAdminImage(this, 'adminPreview3')"
-    >
-
-    <div
-      id="adminPreview3"
-      class="admin-image-preview"
-    ></div>
+      </select>
 
 
-    <!-- IMAGE 4 -->
+      <label>
+        Regular Price
+      </label>
 
-    <label>Additional Image 4</label>
-
-    <input
-      type="file"
-      id="adminProductImage4"
-      accept="image/*"
-      onchange="previewAdminImage(this, 'adminPreview4')"
-    >
-
-    <div
-      id="adminPreview4"
-      class="admin-image-preview"
-    ></div>
+      <input
+        type="number"
+        id="adminProductPrice"
+        placeholder="e.g. 3499"
+      >
 
 
-    <button
-      type="button"
-      class="admin-save-btn"
-      onclick="saveAdminProduct()"
-    >
-      SAVE PRODUCT
-    </button>
+      <label>
+        Sale Price
+      </label>
+
+      <input
+        type="number"
+        id="adminProductSalePrice"
+        placeholder="Optional — e.g. 2999"
+      >
 
 
-    <button
-      type="button"
-      class="admin-cancel-btn"
-      id="adminCancelBtn"
-      onclick="cancelAdminEdit()"
-      style="display:none;"
-    >
-      CANCEL EDIT
-    </button>
+      <label>
+        Product Description
+      </label>
 
-  </section>
+      <textarea
+        id="adminProductDescription"
+        rows="5"
+        placeholder="Write complete product description..."
+      ></textarea>
 
 
-  <!-- ALL PRODUCTS -->
+      <label>
+        Available Sizes
+      </label>
 
-  <section class="admin-products-box">
 
-    <div class="admin-products-heading">
+      <div class="admin-check-grid">
 
-      <h2>All Products</h2>
+        <label class="admin-check">
+          <input
+            type="checkbox"
+            value="S"
+            class="product-size"
+          >
+          <span>S</span>
+        </label>
 
-      <span id="adminProductCount">
-        0 Products
-      </span>
 
-    </div>
+        <label class="admin-check">
+          <input
+            type="checkbox"
+            value="M"
+            class="product-size"
+          >
+          <span>M</span>
+        </label>
 
-    <div id="adminProductsList"></div>
 
-  </section>
+        <label class="admin-check">
+          <input
+            type="checkbox"
+            value="L"
+            class="product-size"
+          >
+          <span>L</span>
+        </label>
 
-</main>
 
+        <label class="admin-check">
+          <input
+            type="checkbox"
+            value="XL"
+            class="product-size"
+          >
+          <span>XL</span>
+        </label>
+
+
+        <label class="admin-check">
+          <input
+            type="checkbox"
+            value="XXL"
+            class="product-size"
+          >
+          <span>XXL</span>
+        </label>
+
+      </div>
+
+
+      <label>
+        Colors
+      </label>
+
+      <input
+        type="text"
+        id="adminProductColors"
+        placeholder="e.g. Black, White, Beige"
+      >
+
+
+      <label>
+        Stock Quantity
+      </label>
+
+      <input
+        type="number"
+        id="adminProductStock"
+        placeholder="e.g. 25"
+      >
+
+
+      <label>
+        Rating
+      </label>
+
+      <select id="adminProductRating">
+
+        <option value="5">
+          ★★★★★ — 5.0
+        </option>
+
+        <option value="4.5">
+          ★★★★½ — 4.5
+        </option>
+
+        <option value="4">
+          ★★★★ — 4.0
+        </option>
+
+        <option value="3.5">
+          ★★★½ — 3.5
+        </option>
+
+        <option value="3">
+          ★★★ — 3.0
+        </option>
+
+      </select>
+
+
+      <label>
+        Badge
+      </label>
+
+      <select id="adminProductBadge">
+
+        <option value="">
+          No Badge
+        </option>
+
+        <option value="NEW">
+          NEW
+        </option>
+
+        <option value="TRENDING">
+          TRENDING
+        </option>
+
+        <option value="POPULAR">
+          POPULAR
+        </option>
+
+        <option value="SALE">
+          SALE
+        </option>
+
+      </select>
+
+
+      <!-- =====================================
+           MAIN IMAGE
+      ====================================== -->
+
+      <label>
+        Main Product Image
+      </label>
+
+      <input
+        type="file"
+        id="adminProductImage"
+        accept="image/*"
+        onchange="previewAdminImage(this, 'adminPreview1')"
+      >
+
+      <div
+        id="adminPreview1"
+        class="admin-image-preview"
+      ></div>
+
+
+      <!-- =====================================
+           IMAGE 2
+      ====================================== -->
+
+      <label>
+        Additional Image 2
+      </label>
+
+      <input
+        type="file"
+        id="adminProductImage2"
+        accept="image/*"
+        onchange="previewAdminImage(this, 'adminPreview2')"
+      >
+
+      <div
+        id="adminPreview2"
+        class="admin-image-preview"
+      ></div>
+
+
+      <!-- =====================================
+           IMAGE 3
+      ====================================== -->
+
+      <label>
+        Additional Image 3
+      </label>
+
+      <input
+        type="file"
+        id="adminProductImage3"
+        accept="image/*"
+        onchange="previewAdminImage(this, 'adminPreview3')"
+      >
+
+      <div
+        id="adminPreview3"
+        class="admin-image-preview"
+      ></div>
+
+
+      <!-- =====================================
+           IMAGE 4
+      ====================================== -->
+
+      <label>
+        Additional Image 4
+      </label>
+
+      <input
+        type="file"
+        id="adminProductImage4"
+        accept="image/*"
+        onchange="previewAdminImage(this, 'adminPreview4')"
+      >
+
+      <div
+        id="adminPreview4"
+        class="admin-image-preview"
+      ></div>
+
+
+      <!-- =====================================
+           SAVE
+      ====================================== -->
+
+      <button
+        type="button"
+        class="admin-save-btn"
+        onclick="saveAdminProduct()"
+      >
+        SAVE PRODUCT
+      </button>
+
+
+      <!-- =====================================
+           CANCEL EDIT
+      ====================================== -->
+
+      <button
+        type="button"
+        class="admin-cancel-btn"
+        id="adminCancelBtn"
+        onclick="cancelAdminEdit()"
+        style="display:none;"
+      >
+        CANCEL EDIT
+      </button>
+
+    </section>
+
+
+    <!-- =====================================
+         ALL PRODUCTS
+    ====================================== -->
+
+    <section class="admin-products-box">
+
+      <div class="admin-products-heading">
+
+        <h2>
+          All Products
+        </h2>
+
+        <span id="adminProductCount">
+          0 Products
+        </span>
+
+      </div>
+
+
+      <div id="adminProductsList"></div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- =========================================
+     EXISTING WEBSITE JAVASCRIPT
+========================================= -->
 
 <script src="script.js"></script>
 
+
+<!-- =========================================
+     ADMIN LOGIN SYSTEM
+========================================= -->
+
+<script>
+
+  /*
+   * ==========================================
+   * ZUNVERO ADMIN PASSWORD
+   * ==========================================
+   *
+   * Current password:
+   *
+   * Haseeb791@
+   *
+   * Agar password change karna ho to neeche
+   * ADMIN_PASSWORD ki value change kar dena.
+   */
+
+  const ADMIN_PASSWORD = "Haseeb791@";
+
+
+  /*
+   * Check login when page loads
+   */
+
+  document.addEventListener("DOMContentLoaded", function () {
+
+    if (sessionStorage.getItem("zunveroAdminLoggedIn") === "true") {
+
+      showAdminPanel();
+
+    } else {
+
+      showAdminLogin();
+
+    }
+
+  });
+
+
+  /*
+   * ADMIN LOGIN
+   */
+
+  function adminLogin() {
+
+    const passwordInput =
+      document.getElementById("adminPassword");
+
+    const errorBox =
+      document.getElementById("adminLoginError");
+
+    const password =
+      passwordInput.value.trim();
+
+
+    if (!password) {
+
+      errorBox.textContent =
+        "Please enter admin password.";
+
+      return;
+
+    }
+
+
+    if (password === ADMIN_PASSWORD) {
+
+      sessionStorage.setItem(
+        "zunveroAdminLoggedIn",
+        "true"
+      );
+
+      errorBox.textContent = "";
+
+      passwordInput.value = "";
+
+      showAdminPanel();
+
+
+    } else {
+
+      errorBox.textContent =
+        "Incorrect admin password.";
+
+      passwordInput.value = "";
+
+      passwordInput.focus();
+
+    }
+
+  }
+
+
+  /*
+   * SHOW ADMIN PANEL
+   */
+
+  function showAdminPanel() {
+
+    document.getElementById(
+      "adminLoginScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+      "adminContent"
+    ).style.display = "block";
+
+
+    /*
+     * Existing admin product function
+     * ko dobara run karne ki koshish.
+     */
+
+    if (typeof showAdminProducts === "function") {
+
+      setTimeout(function () {
+
+        showAdminProducts();
+
+      }, 100);
+
+    }
+
+  }
+
+
+  /*
+   * SHOW LOGIN
+   */
+
+  function showAdminLogin() {
+
+    document.getElementById(
+      "adminLoginScreen"
+    ).style.display = "flex";
+
+
+    document.getElementById(
+      "adminContent"
+    ).style.display = "none";
+
+
+    setTimeout(function () {
+
+      const input =
+        document.getElementById("adminPassword");
+
+      if (input) {
+        input.focus();
+      }
+
+    }, 100);
+
+  }
+
+
+  /*
+   * ADMIN LOGOUT
+   */
+
+  function adminLogout() {
+
+    sessionStorage.removeItem(
+      "zunveroAdminLoggedIn"
+    );
+
+    showAdminLogin();
+
+  }
+
+</script>
+
 </body>
-</html>
+  </html>
