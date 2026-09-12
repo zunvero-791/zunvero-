@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZUNVERO — Checkout</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="topbar">
+    Free Delivery All Over Pakistan
+  </div>
+
+  <header class="checkout-header">
+
+    <a href="index.html" class="logo">
+      <span>Ƶ</span> ZUNVERO
+    </a>
+
+    <a href="cart.html" class="checkout-cart">
+      🛒 Cart <span id="cartCount">0</span>
+    </a>
+
+  </header>
+
+
+  <main class="checkout-page">
+
+    <div class="checkout-title">
+      <p>SECURE ORDER</p>
+      <h1>Checkout</h1>
+    </div>
+
+
+    <div class="checkout-layout">
+
+      <!-- CUSTOMER INFORMATION -->
+
+      <section class="checkout-form">
+
+        <h2>Delivery Information</h2>
+
+        <label>Full Name</label>
+        <input
+          type="text"
+          id="customerName"
+          placeholder="Enter your full name"
+          required
+        >
+
+        <label>Phone Number</label>
+        <input
+          type="tel"
+          id="customerPhone"
+          placeholder="03XX XXXXXXX"
+          required
+        >
+
+        <label>Complete Address</label>
+        <textarea
+          id="customerAddress"
+          placeholder="House/Flat, Street, Area, City"
+          rows="4"
+          required
+        ></textarea>
+
+        <label>City</label>
+        <input
+          type="text"
+          id="customerCity"
+          placeholder="Lahore"
+          required
+        >
+
+
+        <div class="payment-box">
+
+          <h3>Payment Method</h3>
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="Cash on Delivery"
+              checked
+            >
+
+            <span>
+              Cash on Delivery
+            </span>
+
+          </label>
+
+        </div>
+
+
+        <button
+    type="button"
+    class="place-order-btn"
+    onclick="placeCheckoutOrder(event)">
+
+          PLACE ORDER ON WHATSAPP
+
+        </>
+
+      </section>
+
+
+      <!-- ORDER SUMMARY -->
+
+      <section class="order-summary">
+
+        <h2>Your Order</h2>
+
+        <div id="checkoutItems"></div>
+
+        <div class="checkout-total">
+
+          <span>Total</span>
+
+          <strong id="checkoutTotal">
+            Rs. 0
+          </strong>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

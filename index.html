@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZUNVERO — More Than Fashion</title>
+
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    Cash on Delivery Available
+  </div>
+
+
+  <!-- NAVBAR -->
+  <header>
+
+    <div class="logo">
+      <span>𝒵</span> ZUNVERO
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#women" onclick="filterProducts('women'); return false;">Women</a>
+      <a href="#men" onclick="filterProducts('men'); return false;">Men</a>
+      <a href="#tshirts" onclick="filterProducts('tshirt'); return false;">T-Shirt</a>
+      <a href="#twopiece" onclick="filterProducts('twopiece'); return false;">2-Piece</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#sale">Sale</a>
+    </nav>
+
+    <div class="icons">
+
+      <a href="login.html" class="account-btn">
+        ACCOUNT
+      </a>
+
+      <div class="search-box" id="searchBox">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search products..."
+        >
+      </div>
+
+      <button
+        class="search-btn"
+        onclick="openSearch()">
+        🔍
+      </button>
+
+      <a href="cart.html" class="cart-link">
+        🛒 Cart <span id="cartCount">0</span>
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p>NEW SEASON COLLECTION</p>
+
+      <h1>
+        Elevate Your<br>
+        Everyday Look
+      </h1>
+
+      <span>
+        Trendy Outfits • Premium Quality • Unbeatable Prices
+      </span>
+
+      <br><br>
+
+      <a href="#products" class="btn">
+        SHOP NOW →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- SHOP BY CATEGORY -->
+  <section class="category-section">
+
+    <div class="category-heading">
+
+      <div class="heading-line">
+        ✦
+      </div>
+
+      <h2>
+        Shop By Category
+      </h2>
+
+      <p>
+        FIND YOUR STYLE
+      </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+      <a href="#women" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=80"
+            alt="Women">
+        </div>
+
+        <h3>Women</h3>
+
+        <span>→</span>
+
+      </a>
+
+
+      <a href="#men" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?auto=format&fit=crop&w=500&q=80"
+            alt="Men">
+        </div>
+
+        <h3>Men</h3>
+
+        <span>→</span>
+
+      </a>
+
+
+      <a href="#tshirts" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+            alt="T-Shirts">
+        </div>
+
+        <h3>T-Shirts</h3>
+
+        <span>→</span>
+
+      </a>
+
+
+      <a href="#twopiece" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=500&q=80"
+            alt="2-Piece">
+        </div>
+
+        <h3>2-Piece</h3>
+
+        <span>→</span>
+
+      </a>
+
+
+      <a href="#accessories" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80"
+            alt="Bags">
+        </div>
+
+        <h3>Bags</h3>
+
+        <span>→</span>
+
+      </a>
+
+
+      <a href="#shoes" class="category-card">
+
+        <div class="category-image">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
+            alt="Shoes">
+        </div>
+
+        <h3>Shoes</h3>
+
+        <span>→</span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- COLLECTION BANNERS -->
+  <section class="collections">
+
+    <div
+      class="collection-box women-box"
+      id="women">
+
+      <div>
+
+        <p>
+          2-PIECE COLLECTION
+        </p>
+
+        <h2>
+          Effortless<br>
+          Elegance
+        </h2>
+
+        <a href="#products">
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="collection-box tshirt-box"
+      id="tshirts">
+
+      <div>
+
+        <p>
+          T-SHIRTS
+        </p>
+
+        <h2>
+          Comfort Meets<br>
+          Style
+        </h2>
+
+        <a href="#products">
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section
+    class="products-section"
+    id="products">
+
+    <div class="section-title">
+
+      <div>
+
+        <p class="small-title">
+          ZUNVERO COLLECTION
+        </p>
+
+        <h2>
+          Best Sellers
+        </h2>
+
+      </div>
+
+      <a href="#products">
+        View All →
+      </a>
+
+    </div>
+
+
+    <div class="products" id="homeProducts">
+
+
+      <!-- PRODUCT 1 -->
+      <div
+  class="product-card"
+  data-category="women twopiece"
+  data-product-id="zv1"
+  onclick="window.location.href='product.html?id=zv1'">
+
+        <div class="product-photo">
+
+          <span class="badge">
+            NEW
+          </span>
+
+          <img
+            src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80"
+            alt="Floral Elegance 2-Piece">
+
+          <button
+            class="heart"
+            onclick="event.stopPropagation(); toggleWishlist('Floral Elegance 2-Piece',3499,'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80',this)">
+            ♡
+          </button>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <p class="product-category">
+            WOMEN • 2-PIECE
+          </p>
+
+          <h3>
+            Floral Elegance 2-Piece
+          </h3>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <p class="price">
+            Rs. 3,499
+          </p>
+
+          <div class="product-actions">
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); addToCart('Floral Elegance 2-Piece',3499,'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80')">
+              ADD TO CART
+            </button>
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); orderProduct('Floral Elegance 2-Piece',3499)">
+              ORDER ON WHATSAPP
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 2 -->
+      <div
+  class="product-card"
+  data-category="men tshirts"
+  data-product-id="zv2"
+  onclick="window.location.href='product.html?id=zv2'">
+
+        <div class="product-photo">
+
+          <span class="badge">
+            TRENDING
+          </span>
+
+          <img
+            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"
+            alt="Classic Premium T-Shirt">
+
+          <button
+            class="heart"
+            onclick="event.stopPropagation(); toggleWishlist('Classic Premium T-Shirt',1699,'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80',this)">
+            ♡
+          </button>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <p class="product-category">
+            MEN • T-SHIRT
+          </p>
+
+          <h3>
+            Classic Premium T-Shirt
+          </h3>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <p class="price">
+            Rs. 1,699
+          </p>
+
+          <div class="product-actions">
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); addToCart('Classic Premium T-Shirt',1699,'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80')">
+              ADD TO CART
+            </button>
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); orderProduct('Classic Premium T-Shirt',1699)">
+              ORDER ON WHATSAPP
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 3 -->
+      <div
+  class="product-card"
+  data-category="women twopiece"
+  data-product-id="zv3"
+  onclick="window.location.href='product.html?id=zv3'">
+
+        <div class="product-photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=700&q=80"
+            alt="Elegant Embroidered Suit">
+
+          <button
+            class="heart"
+            onclick="event.stopPropagation(); toggleWishlist('Elegant Embroidered Suit',4299,'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=700&q=80',this)">
+            ♡
+          </button>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <p class="product-category">
+            WOMEN • 2-PIECE
+          </p>
+
+          <h3>
+            Elegant Embroidered Suit
+          </h3>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <p class="price">
+            Rs. 4,299
+          </p>
+
+          <div class="product-actions">
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); addToCart('Elegant Embroidered Suit',4299,'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=700&q=80')">
+              ADD TO CART
+            </button>
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); orderProduct('Elegant Embroidered Suit',4299)">
+              ORDER ON WHATSAPP
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 4 -->
+      <div
+  class="product-card"
+  data-category="men tshirts"
+  data-product-id="zv4"
+  onclick="window.location.href='product.html?id=zv4'">
+
+        <div class="product-photo">
+
+          <span class="badge">
+            POPULAR
+          </span>
+
+          <img
+            src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80"
+            alt="Oversized Street T-Shirt">
+
+          <button
+            class="heart"
+            onclick="event.stopPropagation(); toggleWishlist('Oversized Street T-Shirt',1999,'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80',this)">
+            ♡
+          </button>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <p class="product-category">
+            MEN • T-SHIRT
+          </p>
+
+          <h3>
+            Oversized Street T-Shirt
+          </h3>
+
+          <div class="rating">
+            ★★★★★
+          </div>
+
+          <p class="price">
+            Rs. 1,999
+          </p>
+
+          <div class="product-actions">
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); addToCart('Oversized Street T-Shirt',1999,'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80')">
+              ADD TO CART
+            </button>
+
+            <button
+              class="cart-btn"
+              onclick="event.stopPropagation(); orderProduct('Oversized Street T-Shirt',1999)">
+              ORDER ON WHATSAPP
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- NEW ARRIVALS -->
+  <section class="new-arrivals">
+
+    <div>
+
+      <p>
+        FRESH STYLES • BETTER VIBES
+      </p>
+
+      <h2>
+        New Arrivals<br>
+        Just For You
+      </h2>
+
+      <a
+        href="#products"
+        class="btn">
+        SHOP NEW ARRIVALS →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+  <section class="features">
+
+    <div>
+      🚚
+      <h3>
+        Fast Delivery
+      </h3>
+      <p>
+        All Over Pakistan
+      </p>
+    </div>
+
+    <div>
+      🛡️
+      <h3>
+        Secure Payments
+      </h3>
+      <p>
+        100% Safe & Secure
+      </p>
+    </div>
+
+    <div>
+      ↩️
+      <h3>
+        Easy Returns
+      </h3>
+      <p>
+        Within 7 Days
+      </p>
+    </div>
+
+    <div>
+      📞
+      <h3>
+        Customer Support
+      </h3>
+      <p>
+        We're Always Here
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-logo">
+
+      𝒵 ZUNVERO
+
+      <small>
+        MORE THAN FASHION
+      </small>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="#">
+        About Us
+      </a>
+
+      <a href="#">
+        Contact Us
+      </a>
+
+      <a href="#">
+        Shipping Policy
+      </a>
+
+      <a href="#">
+        Return Policy
+      </a>
+
+      <a href="#">
+        Privacy Policy
+      </a>
+
+    </div>
+
+
+    <p>
+      © 2026 ZUNVERO. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html><script>
+/* =====================================================
+   ZUNVERO — SHOW ADMIN PRODUCTS ON HOMEPAGE
+   ===================================================== */
+
+function renderAdminProductsOnHome() {
+
+    var container = document.getElementById("homeProducts");
+
+    if (!container) return;
+
+    var products = [];
+
+    try {
+        products = JSON.parse(
+            localStorage.getItem("zunveroProducts") || "[]"
+        );
+    } catch (error) {
+        products = [];
+    }
+
+    if (!Array.isArray(products)) return;
+
+    /* Existing homepage products:
+       zv1/zv2/zv3/zv4
+       Admin system ke default products:
+       1/2/3/4
+    */
+    var existingIds = [
+        "zv1",
+        "zv2",
+        "zv3",
+        "zv4",
+        "1",
+        "2",
+        "3",
+        "4"
+    ];
+
+    products.forEach(function(product) {
+
+        if (!product) return;
+
+        var productId = String(product.id);
+
+        /* Default products ko duplicate nahi karna */
+        if (existingIds.indexOf(productId) !== -1) {
+            return;
+        }
+
+        /* Agar product already page par hai to dobara na lagayen */
+        if (
+            container.querySelector(
+                '.product-card[data-product-id="' +
+                CSS.escape(productId) +
+                '"]'
+            )
+        ) {
+            return;
+        }
+
+        var card = document.createElement("div");
+
+        card.className = "product-card";
+
+        card.setAttribute(
+            "data-category",
+            String(product.category || "").toLowerCase()
+        );
+
+        card.setAttribute(
+            "data-product-id",
+            productId
+        );
+
+        card.style.cursor = "pointer";
+
+        /* Product click */
+        card.addEventListener("click", function(event) {
+
+            if (
+                event.target.closest(".cart-btn") ||
+                event.target.closest(".heart") ||
+                event.target.closest(".order-btn")
+            ) {
+                return;
+            }
+
+            window.location.href =
+                "product.html?id=" +
+                encodeURIComponent(productId);
+        });
+
+
+        /* =========================
+           IMAGE
+           ========================= */
+
+        var imageBox = document.createElement("div");
+        imageBox.className = "product-image";
+
+        var image = document.createElement("img");
+
+        var mainImage =
+            product.image ||
+            (
+                Array.isArray(product.images)
+                    ? product.images[0]
+                    : ""
+            );
+
+        image.src = mainImage || "https://via.placeholder.com/700x900?text=ZUNVERO";
+
+        image.alt = product.name || "ZUNVERO Product";
+
+        image.loading = "lazy";
+
+        imageBox.appendChild(image);
+
+
+        /* =========================
+           BADGE
+           ========================= */
+
+        if (product.badge) {
+
+            var badge = document.createElement("span");
+
+            badge.className = "product-badge";
+
+            badge.textContent = product.badge;
+
+            imageBox.appendChild(badge);
+        }
+
+
+        /* =========================
+           HEART
+           ========================= */
+
+        var heart = document.createElement("button");
+
+        heart.className = "heart";
+
+        heart.type = "button";
+
+        heart.innerHTML = "♡";
+
+        heart.addEventListener("click", function(event) {
+
+            event.stopPropagation();
+
+            var wishlistPrice =
+                Number(product.salePrice) > 0
+                    ? Number(product.salePrice)
+                    : Number(product.price);
+
+            if (typeof toggleWishlist === "function") {
+
+                toggleWishlist(
+                    product.name,
+                    wishlistPrice,
+                    mainImage,
+                    heart
+                );
+            }
+        });
+
+        imageBox.appendChild(heart);
+
+        card.appendChild(imageBox);
+
+
+        /* =========================
+           PRODUCT INFO
+           ========================= */
+
+        var info = document.createElement("div");
+
+        info.className = "product-info";
+
+
+        var category = document.createElement("p");
+
+        category.className = "product-category";
+
+        category.textContent =
+            String(product.category || "Fashion")
+                .split(" ")
+                .map(function(word) {
+                    return word.charAt(0).toUpperCase() +
+                           word.slice(1);
+                })
+                .join(" ");
+
+        info.appendChild(category);
+
+
+        var title = document.createElement("h3");
+
+        title.textContent =
+            product.name || "ZUNVERO Product";
+
+        info.appendChild(title);
+
+
+        /* =========================
+           RATING
+           ========================= */
+
+        var rating = document.createElement("div");
+
+        rating.className = "rating";
+
+        var ratingNumber =
+            Math.max(
+                0,
+                Math.min(
+                    5,
+                    Number(product.rating) || 5
+                )
+            );
+
+        rating.textContent =
+            "★".repeat(Math.round(ratingNumber));
+
+        info.appendChild(rating);
+
+
+        /* =========================
+           PRICE
+           ========================= */
+
+        var priceBox = document.createElement("div");
+
+        priceBox.className = "price";
+
+        if (
+            Number(product.salePrice) > 0 &&
+            Number(product.salePrice) < Number(product.price)
+        ) {
+
+            var oldPrice =
+                document.createElement("span");
+
+            oldPrice.style.textDecoration =
+                "line-through";
+
+            oldPrice.style.marginRight =
+                "8px";
+
+            oldPrice.textContent =
+                "Rs. " +
+                Number(product.price).toLocaleString();
+
+            priceBox.appendChild(oldPrice);
+
+
+            var salePrice =
+                document.createElement("strong");
+
+            salePrice.textContent =
+                "Rs. " +
+                Number(product.salePrice).toLocaleString();
+
+            priceBox.appendChild(salePrice);
+
+        } else {
+
+            priceBox.textContent =
+                "Rs. " +
+                Number(product.price || 0)
+                    .toLocaleString();
+        }
+
+        info.appendChild(priceBox);
+
+
+        /* =========================
+           BUTTONS
+           ========================= */
+
+        var buttons = document.createElement("div");
+
+        buttons.className = "product-buttons";
+
+
+        /* CART */
+        var cartButton =
+            document.createElement("button");
+
+        cartButton.type = "button";
+
+        cartButton.className = "cart-btn";
+
+        cartButton.textContent =
+            "Add to Cart";
+
+        cartButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                var cartPrice =
+                    Number(product.salePrice) > 0
+                        ? Number(product.salePrice)
+                        : Number(product.price);
+
+                if (typeof addToCart === "function") {
+
+                    addToCart(
+                        product.name,
+                        cartPrice,
+                        mainImage
+                    );
+                }
+            }
+        );
+
+        buttons.appendChild(cartButton);
+
+
+        /* ORDER */
+        var orderButton =
+            document.createElement("button");
+
+        orderButton.type = "button";
+
+        orderButton.className = "order-btn";
+
+        orderButton.textContent =
+            "Order Now";
+
+        orderButton.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                var orderPrice =
+                    Number(product.salePrice) > 0
+                        ? Number(product.salePrice)
+                        : Number(product.price);
+
+                if (typeof orderProduct === "function") {
+
+                    orderProduct(
+                        product.name,
+                        orderPrice
+                    );
+                }
+            }
+        );
+
+        buttons.appendChild(orderButton);
+
+
+        info.appendChild(buttons);
+
+        card.appendChild(info);
+
+        container.appendChild(card);
+    });
+}
+
+
+/* =====================================================
+   NAVBAR CATEGORY FILTER
+   ===================================================== */
+
+function filterProducts(category) {
+
+    var selected =
+        String(category || "").toLowerCase();
+
+    var cards =
+        document.querySelectorAll(
+            ".products-section .product-card"
+        );
+
+    cards.forEach(function(card) {
+
+        var cardCategory =
+            String(
+                card.getAttribute("data-category") || ""
+            ).toLowerCase();
+
+        if (
+            selected === "" ||
+            cardCategory.indexOf(selected) !== -1
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+        }
+    });
+
+
+    var productsSection =
+        document.getElementById("products");
+
+    if (productsSection) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
+
+/* =====================================================
+   LOAD ADMIN PRODUCTS
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        renderAdminProductsOnHome();
+
+    }
+);
+</script>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZUNVERO — Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topbar">ZUNVERO ADMIN PANEL</div>
+
+<header class="admin-header">
+
+  <a href="index.html" class="auth-logo">
+    <span>Ƶ</span> ZUNVERO
+  </a>
+
+  <div>
+    <a href="admin-orders.html" class="admin-store-link">
+      ORDERS
+    </a>
+
+    <a href="index.html" class="admin-store-link">
+      VIEW STORE →
+    </a>
+  </div>
+
+</header>
+
+
+<main class="admin-page">
+
+  <div class="admin-title">
+    <p>STORE MANAGEMENT</p>
+    <h1>Products</h1>
+  </div>
+
+
+  <!-- PRODUCT FORM -->
+
+  <section class="admin-form-box">
+
+    <h2 id="adminFormTitle">Add New Product</h2>
+
+    <input type="hidden" id="editProductId">
+
+
+    <label>Product Name</label>
+    <input
+      type="text"
+      id="adminProductName"
+      placeholder="e.g. Premium Cotton T-Shirt"
+    >
+
+
+    <label>Category</label>
+
+    <select id="adminProductCategory">
+
+      <option value="women twopiece">
+        Women • 2-Piece
+      </option>
+
+      <option value="men tshirts">
+        Men • T-Shirt
+      </option>
+
+      <option value="women">
+        Women
+      </option>
+
+      <option value="men">
+        Men
+      </option>
+
+      <option value="tshirts">
+        T-Shirts
+      </option>
+
+      <option value="twopiece">
+        2-Piece
+      </option>
+
+      <option value="accessories">
+        Accessories
+      </option>
+
+      <option value="shoes">
+        Shoes
+      </option>
+
+    </select>
+
+
+    <label>Regular Price</label>
+
+    <input
+      type="number"
+      id="adminProductPrice"
+      placeholder="e.g. 3499"
+    >
+
+
+    <label>Sale Price</label>
+
+    <input
+      type="number"
+      id="adminProductSalePrice"
+      placeholder="Optional — e.g. 2999"
+    >
+
+
+    <label>Product Description</label>
+
+    <textarea
+      id="adminProductDescription"
+      rows="5"
+      placeholder="Write complete product description..."
+    ></textarea>
+
+
+    <label>Available Sizes</label>
+
+    <div class="admin-check-grid">
+
+      <label class="admin-check">
+        <input type="checkbox" value="S" class="product-size">
+        <span>S</span>
+      </label>
+
+      <label class="admin-check">
+        <input type="checkbox" value="M" class="product-size">
+        <span>M</span>
+      </label>
+
+      <label class="admin-check">
+        <input type="checkbox" value="L" class="product-size">
+        <span>L</span>
+      </label>
+
+      <label class="admin-check">
+        <input type="checkbox" value="XL" class="product-size">
+        <span>XL</span>
+      </label>
+
+      <label class="admin-check">
+        <input type="checkbox" value="XXL" class="product-size">
+        <span>XXL</span>
+      </label>
+
+    </div>
+
+
+    <label>Colors</label>
+
+    <input
+      type="text"
+      id="adminProductColors"
+      placeholder="e.g. Black, White, Beige"
+    >
+
+
+    <label>Stock Quantity</label>
+
+    <input
+      type="number"
+      id="adminProductStock"
+      placeholder="e.g. 25"
+    >
+
+
+    <label>Rating</label>
+
+    <select id="adminProductRating">
+
+      <option value="5">★★★★★ — 5.0</option>
+      <option value="4.5">★★★★½ — 4.5</option>
+      <option value="4">★★★★ — 4.0</option>
+      <option value="3.5">★★★½ — 3.5</option>
+      <option value="3">★★★ — 3.0</option>
+
+    </select>
+
+
+    <label>Badge</label>
+
+    <select id="adminProductBadge">
+
+      <option value="">No Badge</option>
+      <option value="NEW">NEW</option>
+      <option value="TRENDING">TRENDING</option>
+      <option value="POPULAR">POPULAR</option>
+      <option value="SALE">SALE</option>
+
+    </select>
+
+
+    <!-- MAIN IMAGE -->
+
+    <label>Main Product Image</label>
+
+    <input
+      type="file"
+      id="adminProductImage"
+      accept="image/*"
+      onchange="previewAdminImage(this, 'adminPreview1')"
+    >
+
+    <div
+      id="adminPreview1"
+      class="admin-image-preview"
+    ></div>
+
+
+    <!-- IMAGE 2 -->
+
+    <label>Additional Image 2</label>
+
+    <input
+      type="file"
+      id="adminProductImage2"
+      accept="image/*"
+      onchange="previewAdminImage(this, 'adminPreview2')"
+    >
+
+    <div
+      id="adminPreview2"
+      class="admin-image-preview"
+    ></div>
+
+
+    <!-- IMAGE 3 -->
+
+    <label>Additional Image 3</label>
+
+    <input
+      type="file"
+      id="adminProductImage3"
+      accept="image/*"
+      onchange="previewAdminImage(this, 'adminPreview3')"
+    >
+
+    <div
+      id="adminPreview3"
+      class="admin-image-preview"
+    ></div>
+
+
+    <!-- IMAGE 4 -->
+
+    <label>Additional Image 4</label>
+
+    <input
+      type="file"
+      id="adminProductImage4"
+      accept="image/*"
+      onchange="previewAdminImage(this, 'adminPreview4')"
+    >
+
+    <div
+      id="adminPreview4"
+      class="admin-image-preview"
+    ></div>
+
+
+    <button
+      type="button"
+      class="admin-save-btn"
+      onclick="saveAdminProduct()"
+    >
+      SAVE PRODUCT
+    </button>
+
+
+    <button
+      type="button"
+      class="admin-cancel-btn"
+      id="adminCancelBtn"
+      onclick="cancelAdminEdit()"
+      style="display:none;"
+    >
+      CANCEL EDIT
+    </button>
+
+  </section>
+
+
+  <!-- ALL PRODUCTS -->
+
+  <section class="admin-products-box">
+
+    <div class="admin-products-heading">
+
+      <h2>All Products</h2>
+
+      <span id="adminProductCount">
+        0 Products
+      </span>
+
+    </div>
+
+    <div id="adminProductsList"></div>
+
+  </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

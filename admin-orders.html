@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZUNVERO — Orders</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topbar">ZUNVERO ORDER MANAGEMENT</div>
+
+<header class="admin-header">
+
+  <a href="index.html" class="auth-logo">
+    <span>Ƶ</span> ZUNVERO
+  </a>
+
+  <div class="admin-nav-links">
+    <a href="admin.html">PRODUCTS</a>
+    <a href="index.html">STORE</a>
+  </div>
+
+</header>
+
+<main class="orders-admin-page">
+
+  <div class="admin-title">
+    <p>STORE MANAGEMENT</p>
+    <h1>Orders</h1>
+  </div>
+
+  <div class="order-stats">
+
+    <div class="order-stat">
+      <span>TOTAL</span>
+      <strong id="totalOrders">0</strong>
+    </div>
+
+    <div class="order-stat">
+      <span>PENDING</span>
+      <strong id="pendingOrders">0</strong>
+    </div>
+
+    <div class="order-stat">
+      <span>CONFIRMED</span>
+      <strong id="confirmedOrders">0</strong>
+    </div>
+
+    <div class="order-stat">
+      <span>DELIVERED</span>
+      <strong id="deliveredOrders">0</strong>
+    </div>
+
+  </div>
+
+  <div class="orders-filter">
+
+    <button onclick="filterAdminOrders('all')">
+      ALL
+    </button>
+
+    <button onclick="filterAdminOrders('Pending')">
+      PENDING
+    </button>
+
+    <button onclick="filterAdminOrders('Confirmed')">
+      CONFIRMED
+    </button>
+
+    <button onclick="filterAdminOrders('Shipped')">
+      SHIPPED
+    </button>
+
+    <button onclick="filterAdminOrders('Delivered')">
+      DELIVERED
+    </button>
+
+    <button onclick="filterAdminOrders('Cancelled')">
+      CANCELLED
+    </button>
+
+  </div>
+
+  <section class="admin-orders-box">
+
+    <div id="adminOrdersList"></div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

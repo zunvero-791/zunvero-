@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZUNVERO — Product</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.product-page {
+    padding: 70px 6%;
+    background: #f8f6f1;
+}
+
+.product-detail {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: start;
+}
+
+.product-gallery {
+    position: sticky;
+    top: 20px;
+}
+
+.product-large-image {
+    width: 100%;
+    height: 620px;
+    background: #eee8dc;
+    overflow: hidden;
+}
+
+.product-large-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.product-thumb {
+    width: 78px;
+    height: 88px;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-content {
+    padding-top: 15px;
+}
+
+.product-category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.product-content h1 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 15px;
+}
+
+.product-rating {
+    font-size: 14px;
+    color: #b49a7b;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.product-rating span {
+    color: #777;
+    letter-spacing: 0;
+    margin-left: 8px;
+}
+
+.product-price-box {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 22px;
+}
+
+.product-price {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.product-old-price {
+    font-size: 17px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.sale-label {
+    background: #111;
+    color: #fff;
+    padding: 6px 9px;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.product-description {
+    color: #666;
+    line-height: 1.8;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.product-info-box {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 0;
+    margin-bottom: 25px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 7px 0;
+    font-size: 13px;
+}
+
+.info-row strong {
+    font-weight: 500;
+}
+
+.stock-available {
+    color: #58705b;
+}
+
+.stock-out {
+    color: #a33;
+}
+
+.size-title,
+.quantity-title,
+.color-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.sizes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.sizes button {
+    min-width: 48px;
+    height: 42px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.sizes button.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.sizes button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.color-value {
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #555;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    width: 125px;
+    height: 44px;
+    border: 1px solid #ccc;
+    margin-bottom: 25px;
+}
+
+.product-quantity button {
+    width: 40px;
+    height: 100%;
+    border: none;
+    background: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.product-quantity span {
+    flex: 1;
+    text-align: center;
+}
+
+.product-add-btn {
+    width: 100%;
+    padding: 16px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #111;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 11px;
+    transition: .3s;
+}
+
+.product-add-btn:hover {
+    background: #fff;
+    color: #111;
+}
+
+.product-add-btn:disabled {
+    background: #999;
+    border-color: #999;
+    cursor: not-allowed;
+}
+
+.buy-cart {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #111;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media(max-width: 800px) {
+
+    .product-page {
+        padding: 40px 15px;
+    }
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .product-gallery {
+        position: static;
+    }
+
+    .product-large-image {
+        height: 430px;
+    }
+
+    .product-content h1 {
+        font-size: 32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+Free Delivery All Over Pakistan
+</div>
+
+
+<header>
+
+<div class="logo">
+<span>𝒵</span> ZUNVERO
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#women">Women</a>
+<a href="index.html#men">Men</a>
+<a href="index.html#tshirts">T-Shirts</a>
+<a href="index.html#twopiece">2-Piece</a>
+</nav>
+
+<a href="cart.html" class="cart-link">
+🛒 Cart <span id="cartCount">0</span>
+</a>
+
+</header>
+
+
+<section class="product-page">
+
+<div class="product-detail">
+
+
+<!-- PRODUCT IMAGES -->
+
+<div class="product-gallery">
+
+<div class="product-large-image">
+
+<img
+id="productImage"
+src=""
+alt="ZUNVERO Product"
+>
+
+</div>
+
+<div
+class="product-thumbnails"
+id="productThumbnails">
+</div>
+
+</div>
+
+
+<!-- PRODUCT INFORMATION -->
+
+<div class="product-content">
+
+<p
+class="product-category"
+id="productCategory">
+ZUNVERO COLLECTION
+</p>
+
+
+<h1 id="productName">
+Product
+</h1>
+
+
+<div class="product-rating">
+
+<span id="productStars">
+★★★★★
+</span>
+
+<span id="productRating">
+5.0
+</span>
+
+</div>
+
+
+<div class="product-price-box">
+
+<span
+class="product-price"
+id="productPrice">
+Rs. 0
+</span>
+
+<span
+class="product-old-price"
+id="productOldPrice"
+style="display:none;">
+</span>
+
+<span
+class="sale-label"
+id="saleLabel"
+style="display:none;">
+SALE
+</span>
+
+</div>
+
+
+<p
+class="product-description"
+id="productDescription">
+Product description
+</p>
+
+
+<div
+class="product-info-box"
+id="productInfoBox">
+
+<div class="info-row">
+
+<span>Availability</span>
+
+<strong
+id="productStock"
+class="stock-available">
+In Stock
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- SIZES -->
+
+<div
+id="sizeSection">
+
+<div class="size-title">
+SELECT SIZE
+</div>
+
+<div
+class="sizes"
+id="productSizes">
+</div>
+
+</div>
+
+
+<!-- COLORS -->
+
+<div
+id="colorSection">
+
+<div class="color-title">
+COLOR
+</div>
+
+<div
+class="color-value"
+id="productColors">
+—
+</div>
+
+</div>
+
+
+<!-- QUANTITY -->
+
+<div class="quantity-title">
+QUANTITY
+</div>
+
+<div class="product-quantity">
+
+<button onclick="changeProductQty(-1)">
+−
+</button>
+
+<span id="productQty">
+1
+</span>
+
+<button onclick="changeProductQty(1)">
++
+</button>
+
+</div>
+
+
+<button
+class="product-add-btn"
+id="productAddButton"
+onclick="addProductToCart()">
+
+ADD TO CART
+
+</button>
+
+
+<a
+href="cart.html"
+class="buy-cart">
+
+VIEW CART →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-logo">
+𝒵 ZUNVERO
+
+<small>
+MORE THAN FASHION
+</small>
+
+</div>
+
+<p>
+© 2026 ZUNVERO. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
