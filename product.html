@@ -244,6 +244,26 @@
     cursor: not-allowed;
 }
 
+/* ORDER NOW BUTTON */
+
+.product-order-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 12px;
+    background: #fff;
+    color: #111;
+    border: 1px solid #111;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 11px;
+    transition: .3s;
+}
+
+.product-order-btn:hover {
+    background: #111;
+    color: #fff;
+}
+
 .buy-cart {
     display: block;
     text-align: center;
@@ -252,6 +272,86 @@
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 1px;
+}
+
+/* ORDER FORM */
+
+.order-form-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.order-form-overlay.active {
+    display: flex;
+}
+
+.order-form {
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    padding: 30px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.order-form h2 {
+    font-family: Georgia, serif;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.order-form p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-family: inherit;
+}
+
+.order-form textarea {
+    resize: vertical;
+}
+
+.order-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.whatsapp-order-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 11px;
+}
+
+.whatsapp-order-btn:hover {
+    opacity: .85;
 }
 
 @media(max-width: 800px) {
@@ -289,7 +389,6 @@
 Free Delivery All Over Pakistan
 </div>
 
-
 <header>
 
 <div class="logo">
@@ -310,13 +409,9 @@ Free Delivery All Over Pakistan
 
 </header>
 
-
 <section class="product-page">
 
 <div class="product-detail">
-
-
-<!-- PRODUCT IMAGES -->
 
 <div class="product-gallery">
 
@@ -337,9 +432,6 @@ id="productThumbnails">
 
 </div>
 
-
-<!-- PRODUCT INFORMATION -->
-
 <div class="product-content">
 
 <p
@@ -348,11 +440,9 @@ id="productCategory">
 ZUNVERO COLLECTION
 </p>
 
-
 <h1 id="productName">
 Product
 </h1>
-
 
 <div class="product-rating">
 
@@ -365,7 +455,6 @@ Product
 </span>
 
 </div>
-
 
 <div class="product-price-box">
 
@@ -390,13 +479,11 @@ SALE
 
 </div>
 
-
 <p
 class="product-description"
 id="productDescription">
 Product description
 </p>
-
 
 <div
 class="product-info-box"
@@ -416,11 +503,7 @@ In Stock
 
 </div>
 
-
-<!-- SIZES -->
-
-<div
-id="sizeSection">
+<div id="sizeSection">
 
 <div class="size-title">
 SELECT SIZE
@@ -433,11 +516,7 @@ id="productSizes">
 
 </div>
 
-
-<!-- COLORS -->
-
-<div
-id="colorSection">
+<div id="colorSection">
 
 <div class="color-title">
 COLOR
@@ -450,9 +529,6 @@ id="productColors">
 </div>
 
 </div>
-
-
-<!-- QUANTITY -->
 
 <div class="quantity-title">
 QUANTITY
@@ -474,7 +550,6 @@ QUANTITY
 
 </div>
 
-
 <button
 class="product-add-btn"
 id="productAddButton"
@@ -484,6 +559,13 @@ ADD TO CART
 
 </button>
 
+<button
+class="product-order-btn"
+onclick="openOrderForm()">
+
+ORDER NOW
+
+</button>
 
 <a
 href="cart.html"
@@ -499,6 +581,60 @@ VIEW CART →
 
 </section>
 
+<!-- ORDER FORM -->
+
+<div
+id="orderFormOverlay"
+class="order-form-overlay">
+
+<div class="order-form">
+
+<button
+class="order-close"
+onclick="closeOrderForm()">
+
+×
+</button>
+
+<h2>
+Place Your Order
+</h2>
+
+<p id="orderProductInfo">
+Product details
+</p>
+
+<input
+type="text"
+id="customerName"
+placeholder="Your Name"
+autocomplete="name"
+>
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Mobile Number"
+autocomplete="tel"
+>
+
+<textarea
+id="customerAddress"
+placeholder="Complete Delivery Address"
+rows="4"
+></textarea>
+
+<button
+class="whatsapp-order-btn"
+onclick="sendOrderToWhatsApp()">
+
+ORDER ON WHATSAPP
+
+</button>
+
+</div>
+
+</div>
 
 <footer>
 
@@ -515,11 +651,121 @@ MORE THAN FASHION
 © 2026 ZUNVERO. All Rights Reserved.
 </p>
 
-</footer>
+    </footer>
+    <script src="script.js"></script>
+
+<script>
+
+function openOrderForm() {
+
+    const productName =
+        document.getElementById("productName").innerText;
+
+    const productPrice =
+        document.getElementById("productPrice").innerText;
+
+    const quantity =
+        document.getElementById("productQty").innerText;
+
+    const sizeElement =
+        document.querySelector("#productSizes .active");
+
+    const selectedSize =
+        sizeElement ? sizeElement.innerText : "Not selected";
+
+    const color =
+        document.getElementById("productColors").innerText;
+
+    document.getElementById("orderProductInfo").innerText =
+        productName +
+        " | " +
+        productPrice +
+        " | Qty: " +
+        quantity;
+
+    document.getElementById("orderFormOverlay")
+        .classList.add("active");
+}
 
 
-<script src="script.js"></script>
+function closeOrderForm() {
+
+    document.getElementById("orderFormOverlay")
+        .classList.remove("active");
+}
+
+
+function sendOrderToWhatsApp() {
+
+    const customerName =
+        document.getElementById("customerName").value.trim();
+
+    const customerPhone =
+        document.getElementById("customerPhone").value.trim();
+
+    const customerAddress =
+        document.getElementById("customerAddress").value.trim();
+
+    const productName =
+        document.getElementById("productName").innerText;
+
+    const productPrice =
+        document.getElementById("productPrice").innerText;
+
+    const quantity =
+        document.getElementById("productQty").innerText;
+
+    const sizeElement =
+        document.querySelector("#productSizes .active");
+
+    const selectedSize =
+        sizeElement ? sizeElement.innerText : "Not selected";
+
+    const color =
+        document.getElementById("productColors").innerText;
+
+    if (!customerName) {
+        alert("Please enter your name.");
+        return;
+    }
+
+    if (!customerPhone) {
+        alert("Please enter your mobile number.");
+        return;
+    }
+
+    if (!customerAddress) {
+        alert("Please enter your complete address.");
+        return;
+    }
+
+    const message =
+`🛍️ ZUNVERO NEW ORDER
+
+Product: ${productName}
+Price: ${productPrice}
+Quantity: ${quantity}
+Size: ${selectedSize}
+Color: ${color}
+
+Customer Name: ${customerName}
+Mobile: ${customerPhone}
+Address: ${customerAddress}
+
+Please confirm my order.`;
+
+    const whatsappNumber = "923714696172";
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+}
+
+</script>
 
 </body>
-
 </html>
